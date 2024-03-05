@@ -20,22 +20,33 @@ dag = DAG(
 )
 
 def extract_and_save_data():
-    source_file = "source/database6.db"
+
+    source_directory = "source"
     destination_file = "results/destino.csv"
 
     current_directory = os.path.dirname(__file__)
 
-    source_path = os.path.join(current_directory, source_file)
-    destination_path = os.path.join(current_directory, destination_file)
+    source_folder_path = os.path.join(current_directory, source_directory)
 
-    conn = sqlite3.connect(source_path)
+    all_data = []
 
-    query = "SELECT * FROM vaga;"
+    for filename in os.listdir(source_folder_path):
+        if filename.endswith(".db"):
+            source_path = os.path.join(source_folder_path, filename)
+            
+            conn = sqlite3.connect(source_path)
+            query = "SELECT * FROM vaga;"
+            data = pd.read_sql_query(query, conn)
+            conn.close()
+            
+            print(f"Tamanho dos dados de {filename}: {len(data)} linhas")
+            all_data.append(data)
 
-    dados = pd.read_sql_query(query, conn)
-    conn.close()
+            combined_data = pd.concat(all_data, ignore_index=True)
 
-    dados.to_csv(destination_path, index=False)
+            destination_path = os.path.join(current_directory, destination_file)
+
+            combined_data.to_csv(destination_path, index=False)
 
 
 def transform_data():
@@ -50,7 +61,7 @@ def transform_data():
     dados.set_index("id", inplace=True)
     dados_tec = dados[
         dados["title"].str.contains(
-            "QA|Implantação|Programação|Desenvolvedor|Programador|Developer|Analista|Desenvolvimento|Engenheiro|Software|Estágio|Tecnologicas|Tecnologia|Computação|Tech|stack|Dev|Data|Desenvolver|TI",
+            "Engenharia de dados|Engenheiro de Dados|DATA ENGINEER|DATA ENGINEERING",
             case=False,
             regex=True,
         )
@@ -61,11 +72,11 @@ def transform_data():
 
     dados_tec.applications.fillna("Hidden", inplace=True)
     dados_tec.loc[
-        dados["applications"] == "Seja um dos 25 primeiros a se candidatar",
+        dados_tec["applications"] == "Seja um dos 25 primeiros a se candidatar",
         "applications",
     ] = "<=25"
     dados_tec.loc[
-        dados["applications"] == "Mais de 200 candidaturas", "applications"
+        dados_tec["applications"] == "Mais de 200 candidaturas", "applications"
     ] = ">25"
 
     dados_tec.experience_level.fillna("Assistente", inplace=True)
@@ -202,13 +213,9 @@ def transform_data():
         return tecnologia
 
     dados_nao_nulos["posicao"] = dados_nao_nulos.title.apply(lambda x: busca_posicao(x))
-    dados_nao_nulos.loc[dados_nao_nulos["posicao"] == "Não especificado", "posicao"] = (
-        dados_nao_nulos.experience_level.apply(lambda x: busca_posicao_detalhe(x))
-    )
-    dados_nao_nulos.loc[dados_nao_nulos["posicao"] == "Não especificado", "posicao"] = (
-        dados_nao_nulos.description.apply(lambda x: busca_posicao_descricao(x))
-    )
+    dados_nao_nulos["posicao"] = dados_nao_nulos.apply(lambda row: busca_posicao_detalhe(row['experience_level']) if row['posicao'] == "Não especificado" else row['posicao'], axis=1)
 
+    dados_nao_nulos["posicao"] = dados_nao_nulos.apply(lambda row: busca_posicao_descricao(row['description']) if row['posicao'] == "Não especificado" else row['posicao'], axis=1)
     dados_nao_nulos.loc[
         dados_nao_nulos["posicao"].isin(["SR", "SENIOR"]), "posicao"
     ] = "SÊNIOR"
@@ -256,9 +263,12 @@ def load_data_analitico():
     destination_path = os.path.join(current_directory, destination_file)
 
     dados = pd.read_csv(source_path)
+    dados.drop(columns=["lista"], inplace=True)
+    
+    dados = dados.drop_duplicates(subset=['job_id'])
     
     disk_engine = create_engine(f'sqlite:///{destination_path}')
-    dados.to_sql('vagas', disk_engine,if_exists='append')
+    dados.to_sql('vagas', disk_engine,if_exists='replace')
 
 task1 = PythonOperator(
     task_id="Extraçao_dos_dados",
