@@ -112,18 +112,6 @@ def get_info():
         finally:
             pagina = pagina + 1
 
-        # if driver.find_element(
-        #             By.CSS_SELECTOR, "p.inline-notification__text.text-sm.leading-regular"
-        #         ).text.strip()=='Você viu todas as vagas para esta pesquisa':
-        #     end_page=True 
-        #     print("FIM")
-                
-        # if driver.find_element(
-        #             By.CSS_SELECTOR, "p.inline-notification__text.text-sm.leading-regular"
-        #         ).text.strip()=='Você viu todas as vagas para esta pesquisa':
-        #     end_page=True 
-        #     print("FIM")
-
         time.sleep(2)
 
     for job in jobs:

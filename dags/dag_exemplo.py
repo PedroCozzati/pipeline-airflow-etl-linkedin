@@ -2,7 +2,6 @@ from collections import Counter
 from datetime import datetime
 import os
 import re
-import subprocess
 from airflow import DAG
 import pandas as pd
 import sqlite3
@@ -19,7 +18,6 @@ dag = DAG(
     start_date=datetime(2024, 3, 4),
     catchup=False,
 )
-
 
 def extract_and_save_data():
     source_file = "source/database6.db"
@@ -228,15 +226,29 @@ def transform_data():
         "ESTAGIARIO"
     )
 
-    dados_nao_nulos.drop(columns=["lista"], inplace=True)
-
     destination_path = os.path.join(current_directory, "results/dados_transformados.csv")
     dados_nao_nulos.to_csv(destination_path, index=False)
 
 
-def load_data():
+def load_data_transacional():
     source_file = "results/dados_transformados.csv"
-    destination_file = "prod/dados_final.db"
+    destination_file = "prod/dados_transacional.db"
+
+    current_directory = os.path.dirname(__file__)
+
+    source_path = os.path.join(current_directory, source_file)
+    destination_path = os.path.join(current_directory, destination_file)
+
+    dados = pd.read_csv(source_path)
+    dados.drop(columns=["lista"], inplace=True)
+    
+    
+    disk_engine = create_engine(f'sqlite:///{destination_path}')
+    dados.to_sql('vagas', disk_engine,if_exists='replace')
+    
+def load_data_analitico():
+    source_file = "results/dados_transformados.csv"
+    destination_file = "prod/dados_analitico.db"
 
     current_directory = os.path.dirname(__file__)
 
@@ -246,9 +258,7 @@ def load_data():
     dados = pd.read_csv(source_path)
     
     disk_engine = create_engine(f'sqlite:///{destination_path}')
-    dados.to_sql('vagas', disk_engine)
-
-
+    dados.to_sql('vagas', disk_engine,if_exists='append')
 
 task1 = PythonOperator(
     task_id="Extraçao_dos_dados",
@@ -269,12 +279,21 @@ task2 = PythonOperator(
 )
 
 task3 = PythonOperator(
-    task_id="Carregamento_dos_dados",
+    task_id="Carregamento_dos_dados_transacional",
     dag=dag,
-    python_callable=load_data,
+    python_callable=load_data_transacional,
     # requirements=requisitos+['fastapi'],
     # system_site_packages=False,
     # provide_context=False,
 )
 
-task1 >> task2 >> task3
+task4 = PythonOperator(
+    task_id="Carregamento_dos_dados_analitico",
+    dag=dag,
+    python_callable=load_data_analitico,
+    # requirements=requisitos+['fastapi'],
+    # system_site_packages=False,
+    # provide_context=False,
+)
+
+task1 >> task2 >> [task3,task4]
