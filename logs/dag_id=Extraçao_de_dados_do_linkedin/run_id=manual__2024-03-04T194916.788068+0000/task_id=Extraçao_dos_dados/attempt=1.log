@@ -1,0 +1,69 @@
+[2024-03-04T19:49:18.093+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-04T19:49:16.788068+00:00 [queued]>
+[2024-03-04T19:49:18.105+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-04T19:49:16.788068+00:00 [queued]>
+[2024-03-04T19:49:18.106+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-03-04T19:49:18.185+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): Extraçao_dos_dados> on 2024-03-04 19:49:16.788068+00:00
+[2024-03-04T19:49:18.225+0000] {standard_task_runner.py:60} INFO - Started process 129 to run task
+[2024-03-04T19:49:18.228+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin', 'Extraçao_dos_dados', 'manual__2024-03-04T19:49:16.788068+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmpdxjjk_wo']
+[2024-03-04T19:49:18.230+0000] {standard_task_runner.py:88} INFO - Job 15: Subtask Extraçao_dos_dados
+[2024-03-04T19:49:18.324+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-04T19:49:16.788068+00:00 [running]> on host 43d6e1a41402
+[2024-03-04T19:49:18.699+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin' AIRFLOW_CTX_TASK_ID='Extraçao_dos_dados' AIRFLOW_CTX_EXECUTION_DATE='2024-03-04T19:49:16.788068+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-04T19:49:16.788068+00:00'
+[2024-03-04T19:49:18.701+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-03-04T19:49:18.722+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'pip install uvicorn && uvicorn dags.app:app --reload']
+[2024-03-04T19:49:18.737+0000] {subprocess.py:86} INFO - Output:
+[2024-03-04T19:49:24.144+0000] {subprocess.py:93} INFO - Defaulting to user installation because normal site-packages is not writeable
+[2024-03-04T19:49:25.139+0000] {subprocess.py:93} INFO - Collecting uvicorn
+[2024-03-04T19:49:25.270+0000] {subprocess.py:93} INFO -   Downloading uvicorn-0.27.1-py3-none-any.whl.metadata (6.3 kB)
+[2024-03-04T19:49:25.565+0000] {subprocess.py:93} INFO - Requirement already satisfied: click>=7.0 in /home/***/.local/lib/python3.8/site-packages (from uvicorn) (8.1.7)
+[2024-03-04T19:49:25.566+0000] {subprocess.py:93} INFO - Requirement already satisfied: h11>=0.8 in /home/***/.local/lib/python3.8/site-packages (from uvicorn) (0.14.0)
+[2024-03-04T19:49:25.567+0000] {subprocess.py:93} INFO - Requirement already satisfied: typing-extensions>=4.0 in /home/***/.local/lib/python3.8/site-packages (from uvicorn) (4.9.0)
+[2024-03-04T19:49:25.593+0000] {subprocess.py:93} INFO - Downloading uvicorn-0.27.1-py3-none-any.whl (60 kB)
+[2024-03-04T19:49:25.787+0000] {subprocess.py:93} INFO -    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.8/60.8 kB 269.6 kB/s eta 0:00:00
+[2024-03-04T19:49:28.520+0000] {subprocess.py:93} INFO - Installing collected packages: uvicorn
+[2024-03-04T19:49:28.920+0000] {subprocess.py:93} INFO - Successfully installed uvicorn-0.27.1
+[2024-03-04T19:49:29.440+0000] {subprocess.py:93} INFO - 
+[2024-03-04T19:49:29.441+0000] {subprocess.py:93} INFO - [notice] A new release of pip is available: 23.3.2 -> 24.0
+[2024-03-04T19:49:29.442+0000] {subprocess.py:93} INFO - [notice] To update, run: python -m pip install --upgrade pip
+[2024-03-04T19:49:29.742+0000] {subprocess.py:93} INFO - INFO:     Will watch for changes in these directories: ['/tmp/***tmpky1yp1ou']
+[2024-03-04T19:49:29.743+0000] {subprocess.py:93} INFO - INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[2024-03-04T19:49:29.744+0000] {subprocess.py:93} INFO - INFO:     Started reloader process [130] using StatReload
+[2024-03-04T19:49:30.140+0000] {subprocess.py:93} INFO - Process SpawnProcess-1:
+[2024-03-04T19:49:30.141+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2024-03-04T19:49:30.141+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+[2024-03-04T19:49:30.142+0000] {subprocess.py:93} INFO -     self.run()
+[2024-03-04T19:49:30.142+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/multiprocessing/process.py", line 108, in run
+[2024-03-04T19:49:30.143+0000] {subprocess.py:93} INFO -     self._target(*self._args, **self._kwargs)
+[2024-03-04T19:49:30.143+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/uvicorn/_subprocess.py", line 78, in subprocess_started
+[2024-03-04T19:49:30.144+0000] {subprocess.py:93} INFO -     target(sockets=sockets)
+[2024-03-04T19:49:30.144+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/uvicorn/server.py", line 62, in run
+[2024-03-04T19:49:30.144+0000] {subprocess.py:93} INFO -     return asyncio.run(self.serve(sockets=sockets))
+[2024-03-04T19:49:30.145+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/asyncio/runners.py", line 44, in run
+[2024-03-04T19:49:30.145+0000] {subprocess.py:93} INFO -     return loop.run_until_complete(main)
+[2024-03-04T19:49:30.146+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+[2024-03-04T19:49:30.147+0000] {subprocess.py:93} INFO -     return future.result()
+[2024-03-04T19:49:30.147+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/uvicorn/server.py", line 69, in serve
+[2024-03-04T19:49:30.148+0000] {subprocess.py:93} INFO -     config.load()
+[2024-03-04T19:49:30.148+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/uvicorn/config.py", line 458, in load
+[2024-03-04T19:49:30.149+0000] {subprocess.py:93} INFO -     self.loaded_app = import_from_string(self.app)
+[2024-03-04T19:49:30.149+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/uvicorn/importer.py", line 24, in import_from_string
+[2024-03-04T19:49:30.150+0000] {subprocess.py:93} INFO -     raise exc from None
+[2024-03-04T19:49:30.150+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/uvicorn/importer.py", line 21, in import_from_string
+[2024-03-04T19:49:30.151+0000] {subprocess.py:93} INFO -     module = importlib.import_module(module_str)
+[2024-03-04T19:49:30.151+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/importlib/__init__.py", line 127, in import_module
+[2024-03-04T19:49:30.152+0000] {subprocess.py:93} INFO -     return _bootstrap._gcd_import(name[level:], package, level)
+[2024-03-04T19:49:30.152+0000] {subprocess.py:93} INFO -   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+[2024-03-04T19:49:30.153+0000] {subprocess.py:93} INFO -   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+[2024-03-04T19:49:30.153+0000] {subprocess.py:93} INFO -   File "<frozen importlib._bootstrap>", line 961, in _find_and_load_unlocked
+[2024-03-04T19:49:30.153+0000] {subprocess.py:93} INFO -   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+[2024-03-04T19:49:30.154+0000] {subprocess.py:93} INFO -   File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+[2024-03-04T19:49:30.154+0000] {subprocess.py:93} INFO -   File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+[2024-03-04T19:49:30.155+0000] {subprocess.py:93} INFO -   File "<frozen importlib._bootstrap>", line 973, in _find_and_load_unlocked
+[2024-03-04T19:49:30.155+0000] {subprocess.py:93} INFO - ModuleNotFoundError: No module named 'dags'
+[2024-03-04T19:55:25.235+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to skipped. Terminating instance.
+[2024-03-04T19:55:25.239+0000] {process_utils.py:131} INFO - Sending 15 to group 129. PIDs of all processes in the group: [130, 150, 151, 129]
+[2024-03-04T19:55:25.240+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 129
+[2024-03-04T19:55:25.241+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-03-04T19:55:25.244+0000] {subprocess.py:104} INFO - Sending SIGTERM signal to process group
+[2024-03-04T19:55:25.374+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=130, status='terminated', started='19:49:18') (130) terminated with exit code None
+[2024-03-04T19:55:25.375+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=150, status='terminated', started='19:49:29') (150) terminated with exit code None
+[2024-03-04T19:55:25.376+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=129, status='terminated', exitcode=0, started='19:49:17') (129) terminated with exit code 0
+[2024-03-04T19:55:25.377+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=151, status='terminated', started='19:49:29') (151) terminated with exit code None
