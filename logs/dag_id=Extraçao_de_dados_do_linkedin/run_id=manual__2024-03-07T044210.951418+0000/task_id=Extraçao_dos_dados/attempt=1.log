@@ -1,0 +1,20 @@
+[2024-03-07T04:42:13.729+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T04:42:10.951418+00:00 [queued]>
+[2024-03-07T04:42:13.743+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T04:42:10.951418+00:00 [queued]>
+[2024-03-07T04:42:13.744+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-03-07T04:42:13.926+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): Extraçao_dos_dados> on 2024-03-07 04:42:10.951418+00:00
+[2024-03-07T04:42:14.072+0000] {standard_task_runner.py:60} INFO - Started process 6294 to run task
+[2024-03-07T04:42:14.075+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin', 'Extraçao_dos_dados', 'manual__2024-03-07T04:42:10.951418+00:00', '--job-id', '98', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmp7lu6vyf3']
+[2024-03-07T04:42:14.077+0000] {standard_task_runner.py:88} INFO - Job 98: Subtask Extraçao_dos_dados
+[2024-03-07T04:42:14.214+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T04:42:10.951418+00:00 [running]> on host 4fca1e22de4a
+[2024-03-07T04:42:15.233+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin' AIRFLOW_CTX_TASK_ID='Extraçao_dos_dados' AIRFLOW_CTX_EXECUTION_DATE='2024-03-07T04:42:10.951418+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-07T04:42:10.951418+00:00'
+[2024-03-07T04:44:20.642+0000] {warnings.py:109} WARNING - /opt/***/dags/scrap/main.py:47: GuessedAtParserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 47 of the file /opt/***/dags/scrap/main.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+  soup = BeautifulSoup(data)
+
+[2024-03-07T04:44:27.775+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2024-03-07T04:44:27.778+0000] {process_utils.py:131} INFO - Sending 15 to group 6294. PIDs of all processes in the group: [6294]
+[2024-03-07T04:44:27.779+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 6294
+[2024-03-07T04:44:27.779+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-03-07T04:44:27.992+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=6294, status='terminated', exitcode=0, started='04:42:13') (6294) terminated with exit code 0

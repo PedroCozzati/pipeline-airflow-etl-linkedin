@@ -1,0 +1,38 @@
+[2024-03-07T04:10:45.951+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Carregamento_dos_dados_RAW manual__2024-03-07T04:02:29.471060+00:00 [queued]>
+[2024-03-07T04:10:45.964+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Carregamento_dos_dados_RAW manual__2024-03-07T04:02:29.471060+00:00 [queued]>
+[2024-03-07T04:10:45.964+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-03-07T04:10:46.050+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): Carregamento_dos_dados_RAW> on 2024-03-07 04:02:29.471060+00:00
+[2024-03-07T04:10:46.059+0000] {standard_task_runner.py:60} INFO - Started process 5797 to run task
+[2024-03-07T04:10:46.062+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin', 'Carregamento_dos_dados_RAW', 'manual__2024-03-07T04:02:29.471060+00:00', '--job-id', '85', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmp2qroq4_e']
+[2024-03-07T04:10:46.065+0000] {standard_task_runner.py:88} INFO - Job 85: Subtask Carregamento_dos_dados_RAW
+[2024-03-07T04:10:46.159+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin.Carregamento_dos_dados_RAW manual__2024-03-07T04:02:29.471060+00:00 [running]> on host 4fca1e22de4a
+[2024-03-07T04:10:46.355+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin' AIRFLOW_CTX_TASK_ID='Carregamento_dos_dados_RAW' AIRFLOW_CTX_EXECUTION_DATE='2024-03-07T04:02:29.471060+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-07T04:02:29.471060+00:00'
+[2024-03-07T04:10:46.404+0000] {logging_mixin.py:188} INFO - Tamanho dos dados de dados_transacional2024-03-07.db: 155 linhas
+[2024-03-07T04:10:46.646+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 2202, in execute
+    cur.execute(sql, *args)
+sqlite3.OperationalError: no such table: vaga
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_exemplo.py", line 44, in get_all_source
+    data = pd.read_sql_query(query, conn)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 469, in read_sql_query
+    return pandas_sql.read_query(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 2266, in read_query
+    cursor = self.execute(sql, params)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 2214, in execute
+    raise ex from exc
+pandas.errors.DatabaseError: Execution failed on sql 'SELECT * FROM vaga;': no such table: vaga
+[2024-03-07T04:10:46.691+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=Extraçao_de_dados_do_linkedin, task_id=Carregamento_dos_dados_RAW, execution_date=20240307T040229, start_date=20240307T041045, end_date=20240307T041046
+[2024-03-07T04:10:46.750+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 85 for task Carregamento_dos_dados_RAW (Execution failed on sql 'SELECT * FROM vaga;': no such table: vaga; 5797)
+[2024-03-07T04:10:46.798+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-03-07T04:10:46.829+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

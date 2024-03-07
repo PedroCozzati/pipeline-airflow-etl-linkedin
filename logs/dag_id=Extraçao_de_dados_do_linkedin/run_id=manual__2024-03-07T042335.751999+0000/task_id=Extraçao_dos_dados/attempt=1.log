@@ -1,0 +1,53 @@
+[2024-03-07T04:23:38.719+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T04:23:35.751999+00:00 [queued]>
+[2024-03-07T04:23:38.731+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T04:23:35.751999+00:00 [queued]>
+[2024-03-07T04:23:38.732+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-03-07T04:23:38.795+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): Extraçao_dos_dados> on 2024-03-07 04:23:35.751999+00:00
+[2024-03-07T04:23:38.804+0000] {standard_task_runner.py:60} INFO - Started process 6000 to run task
+[2024-03-07T04:23:38.808+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin', 'Extraçao_dos_dados', 'manual__2024-03-07T04:23:35.751999+00:00', '--job-id', '91', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmp923dteca']
+[2024-03-07T04:23:38.810+0000] {standard_task_runner.py:88} INFO - Job 91: Subtask Extraçao_dos_dados
+[2024-03-07T04:23:38.914+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T04:23:35.751999+00:00 [running]> on host 4fca1e22de4a
+[2024-03-07T04:23:39.085+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin' AIRFLOW_CTX_TASK_ID='Extraçao_dos_dados' AIRFLOW_CTX_EXECUTION_DATE='2024-03-07T04:23:35.751999+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-07T04:23:35.751999+00:00'
+[2024-03-07T04:23:51.503+0000] {warnings.py:109} WARNING - /opt/***/dags/scrap/main.py:47: GuessedAtParserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 47 of the file /opt/***/dags/scrap/main.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+  soup = BeautifulSoup(data)
+
+[2024-03-07T04:24:00.672+0000] {logging_mixin.py:188} INFO - 0
+[2024-03-07T04:24:00.727+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_exemplo.py", line 25, in extract
+    test()
+  File "/opt/airflow/dags/scrap/main.py", line 216, in test
+    get_info()
+  File "/opt/airflow/dags/scrap/main.py", line 94, in get_info
+    have_more_jobs_button = driver.find_element(
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 741, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: button.infinite-scroller__show-more-button; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:191:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:509:5
+dom.find/</<@chrome://remote/content/shared/DOM.sys.mjs:136:16
+
+[2024-03-07T04:24:00.760+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=Extraçao_de_dados_do_linkedin, task_id=Extraçao_dos_dados, execution_date=20240307T042335, start_date=20240307T042338, end_date=20240307T042400
+[2024-03-07T04:24:00.992+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 91 for task Extraçao_dos_dados (Message: Unable to locate element: button.infinite-scroller__show-more-button; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:191:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:509:5
+dom.find/</<@chrome://remote/content/shared/DOM.sys.mjs:136:16
+; 6000)
+[2024-03-07T04:24:01.039+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-03-07T04:24:01.170+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

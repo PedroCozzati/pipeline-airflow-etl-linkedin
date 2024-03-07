@@ -1,0 +1,82 @@
+[2024-03-06T01:39:02.515+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Transformaçao_dos_dados scheduled__2024-03-04T07:00:00+00:00 [queued]>
+[2024-03-06T01:39:02.525+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Transformaçao_dos_dados scheduled__2024-03-04T07:00:00+00:00 [queued]>
+[2024-03-06T01:39:02.526+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-03-06T01:39:02.573+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): Transformaçao_dos_dados> on 2024-03-04 07:00:00+00:00
+[2024-03-06T01:39:02.581+0000] {standard_task_runner.py:60} INFO - Started process 78 to run task
+[2024-03-06T01:39:02.583+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin', 'Transformaçao_dos_dados', 'scheduled__2024-03-04T07:00:00+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmpyzyc_rmi']
+[2024-03-06T01:39:02.586+0000] {standard_task_runner.py:88} INFO - Job 43: Subtask Transformaçao_dos_dados
+[2024-03-06T01:39:02.679+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin.Transformaçao_dos_dados scheduled__2024-03-04T07:00:00+00:00 [running]> on host 43d6e1a41402
+[2024-03-06T01:39:03.031+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin' AIRFLOW_CTX_TASK_ID='Transformaçao_dos_dados' AIRFLOW_CTX_EXECUTION_DATE='2024-03-04T07:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-03-04T07:00:00+00:00'
+[2024-03-06T01:39:03.523+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:69: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_tec.drop_duplicates(inplace=True)
+
+[2024-03-06T01:39:03.529+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:71: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_tec.drop_duplicates(subset=["job_id"], inplace=True)
+
+[2024-03-06T01:39:03.531+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:73: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_tec.applications.fillna("Hidden", inplace=True)
+
+[2024-03-06T01:39:03.535+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:82: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_tec.experience_level.fillna("Assistente", inplace=True)
+
+[2024-03-06T01:39:03.538+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:84: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_tec.job_type.fillna("Tempo integral", inplace=True)
+
+[2024-03-06T01:39:03.541+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:86: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_tec.role.fillna("Engenharia e Tecnologia da informação", inplace=True)
+
+[2024-03-06T01:39:03.544+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:87: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_tec.sectors.fillna(
+
+[2024-03-06T01:39:03.548+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:91: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_tec.description.fillna("Sem descrição", inplace=True)
+
+[2024-03-06T01:39:03.554+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:148: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_nao_nulos["temp"] = (
+
+[2024-03-06T01:39:03.683+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:151: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_nao_nulos["requisitos"] = dados_nao_nulos.temp.apply(
+
+[2024-03-06T01:39:03.813+0000] {warnings.py:109} WARNING - /opt/***/dags/dag_exemplo.py:154: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dados_nao_nulos["lista"] = dados_nao_nulos.temp.apply(
+
+[2024-03-06T01:39:03.926+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-03-06T01:39:03.946+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=Extraçao_de_dados_do_linkedin, task_id=Transformaçao_dos_dados, execution_date=20240304T070000, start_date=20240306T013902, end_date=20240306T013903
+[2024-03-06T01:39:04.042+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-03-06T01:39:04.073+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

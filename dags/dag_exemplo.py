@@ -1,9 +1,10 @@
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 import re
 from airflow import DAG
 import pandas as pd
+from scrap.main import test
 import sqlite3
 from sqlalchemy import create_engine
 
@@ -19,55 +20,51 @@ dag = DAG(
     catchup=False,
 )
 
-def extract_and_save_data():
 
-    source_directory = "source"
-    destination_file = "results/destino.csv"
+def extract():
+   test()
+    
+def get_all_source():
 
-    current_directory = os.path.dirname(__file__)
+    destination_file = "results/full_data.csv"
 
-    source_folder_path = os.path.join(current_directory, source_directory)
-
-    all_data = []
-
-    for filename in os.listdir(source_folder_path):
-        if filename.endswith(".db"):
-            source_path = os.path.join(source_folder_path, filename)
-            
-            conn = sqlite3.connect(source_path)
-            query = "SELECT * FROM vaga;"
-            data = pd.read_sql_query(query, conn)
-            conn.close()
-            
-            print(f"Tamanho dos dados de {filename}: {len(data)} linhas")
-            all_data.append(data)
-
-            combined_data = pd.concat(all_data, ignore_index=True)
-
-            destination_path = os.path.join(current_directory, destination_file)
-
-            combined_data.to_csv(destination_path, index=False)
-
-
-def transform_data():
-    source_file = "results/destino.csv"
+    source_file = "source/dados_raw.db"
 
     current_directory = os.path.dirname(__file__)
 
     source_path = os.path.join(current_directory, source_file)
+            
+    conn = sqlite3.connect(source_path)
+    query = "SELECT * FROM vaga;"
+    data = pd.read_sql_query(query, conn)
+    conn.close()
 
+    destination_path = os.path.join(current_directory, destination_file)
+
+    data.to_csv(destination_path, index=False)
+            
+
+
+def transform_data():
+    source_file = "results/full_data.csv"
+
+    current_directory = os.path.dirname(__file__)
+
+    source_path = os.path.join(current_directory, source_file)
+    
     dados = pd.read_csv(source_path)
     dados = dados.reset_index(drop=True)
     dados.set_index("id", inplace=True)
     dados_tec = dados[
         dados["title"].str.contains(
-            "Engenharia de dados|Engenheiro de Dados|DATA ENGINEER|DATA ENGINEERING",
+            "QA|Implantação|Programação|Desenvolvedor|Programador|Developer|Analista|Desenvolvimento|Engenheiro|Software|Estágio|Tecnologicas|Tecnologia|Computação|Tech|stack|Dev|Data|Desenvolver|TI",
+            # "Desenvolvedor|Engenheiro de Dados|DATA ENGINEER|DATA ENGINEERING",
             case=False,
             regex=True,
         )
     ]
-    dados_tec.drop_duplicates(inplace=True)
-    dados_tec[dados_tec.duplicated()]
+    # dados_tec.drop_duplicates(inplace=True)
+    # dados_tec[dados_tec.duplicated()]
     dados_tec.drop_duplicates(subset=["job_id"], inplace=True)
 
     dados_tec.applications.fillna("Hidden", inplace=True)
@@ -247,7 +244,12 @@ def load_data_transacional():
     destination_path = os.path.join(current_directory, destination_file)
 
     dados = pd.read_csv(source_path)
+    
     dados.drop(columns=["lista"], inplace=True)
+    
+    today_date_str = str(datetime.now().strftime('%Y-%m-%d'))
+    
+    dados = dados[dados['register_date'] == today_date_str]
     
     
     disk_engine = create_engine(f'sqlite:///{destination_path}')
@@ -268,18 +270,35 @@ def load_data_analitico():
     dados = dados.drop_duplicates(subset=['job_id'])
     
     disk_engine = create_engine(f'sqlite:///{destination_path}')
-    dados.to_sql('vagas', disk_engine,if_exists='replace')
+    
+    for index, row in dados.iterrows():
+        job_id = row['job_id']
+        
+        query = f"SELECT EXISTS (SELECT 1 FROM vagas WHERE job_id = '{job_id}' LIMIT 1)"
+        
+        result = disk_engine.execute(query).fetchone()
+        
+        if result[0] == 0:
+            row.to_sql('vagas', disk_engine, if_exists='append', index=False)
 
 task1 = PythonOperator(
     task_id="Extraçao_dos_dados",
     dag=dag,
-    python_callable=extract_and_save_data,
+    python_callable=extract,
+    retries= 3, 
+    retry_delay= timedelta(minutes=1),
+)
+
+task2 = PythonOperator(
+    task_id="Carregamento_dos_dados_RAW",
+    dag=dag,
+    python_callable=get_all_source,
     # requirements=requisitos+['fastapi'],
     # system_site_packages=False,
     # provide_context=False,
 )
 
-task2 = PythonOperator(
+task3 = PythonOperator(
     task_id="Transformaçao_dos_dados",
     dag=dag,
     python_callable=transform_data,
@@ -288,7 +307,7 @@ task2 = PythonOperator(
     # provide_context=False,
 )
 
-task3 = PythonOperator(
+task4 = PythonOperator(
     task_id="Carregamento_dos_dados_transacional",
     dag=dag,
     python_callable=load_data_transacional,
@@ -297,7 +316,7 @@ task3 = PythonOperator(
     # provide_context=False,
 )
 
-task4 = PythonOperator(
+task5 = PythonOperator(
     task_id="Carregamento_dos_dados_analitico",
     dag=dag,
     python_callable=load_data_analitico,
@@ -306,4 +325,4 @@ task4 = PythonOperator(
     # provide_context=False,
 )
 
-task1 >> task2 >> [task3,task4]
+task1>>task2>>task3>>[task4,task5]

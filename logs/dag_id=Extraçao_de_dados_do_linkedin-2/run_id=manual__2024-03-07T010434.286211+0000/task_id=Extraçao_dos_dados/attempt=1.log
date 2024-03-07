@@ -1,0 +1,36 @@
+[2024-03-07T01:04:37.152+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin-2.Extraçao_dos_dados manual__2024-03-07T01:04:34.286211+00:00 [queued]>
+[2024-03-07T01:04:37.164+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin-2.Extraçao_dos_dados manual__2024-03-07T01:04:34.286211+00:00 [queued]>
+[2024-03-07T01:04:37.164+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-03-07T01:04:37.219+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): Extraçao_dos_dados> on 2024-03-07 01:04:34.286211+00:00
+[2024-03-07T01:04:37.226+0000] {standard_task_runner.py:60} INFO - Started process 3029 to run task
+[2024-03-07T01:04:37.229+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin-2', 'Extraçao_dos_dados', 'manual__2024-03-07T01:04:34.286211+00:00', '--job-id', '75', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmpxqeg9xtz']
+[2024-03-07T01:04:37.231+0000] {standard_task_runner.py:88} INFO - Job 75: Subtask Extraçao_dos_dados
+[2024-03-07T01:04:37.319+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin-2.Extraçao_dos_dados manual__2024-03-07T01:04:34.286211+00:00 [running]> on host 4fca1e22de4a
+[2024-03-07T01:04:37.476+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin-2' AIRFLOW_CTX_TASK_ID='Extraçao_dos_dados' AIRFLOW_CTX_EXECUTION_DATE='2024-03-07T01:04:34.286211+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-07T01:04:34.286211+00:00'
+[2024-03-07T01:07:00.729+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_exemplo.py", line 25, in extract
+    test()
+  File "/opt/airflow/dags/scrap/main.py", line 18, in test
+    driver = webdriver.Chrome(options=option)
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/chrome/webdriver.py", line 45, in __init__
+    super().__init__(
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/chromium/webdriver.py", line 50, in __init__
+    self.service.start()
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/common/service.py", line 102, in start
+    self.assert_process_still_running()
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/common/service.py", line 115, in assert_process_still_running
+    raise WebDriverException(f"Service {self._path} unexpectedly exited. Status code was: {return_code}")
+selenium.common.exceptions.WebDriverException: Message: Service /home/airflow/.cache/selenium/chromedriver/linux64/122.0.6261.94/chromedriver unexpectedly exited. Status code was: 127
+
+[2024-03-07T01:07:01.354+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=Extraçao_de_dados_do_linkedin-2, task_id=Extraçao_dos_dados, execution_date=20240307T010434, start_date=20240307T010437, end_date=20240307T010701
+[2024-03-07T01:07:02.217+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 75 for task Extraçao_dos_dados (Message: Service /home/airflow/.cache/selenium/chromedriver/linux64/122.0.6261.94/chromedriver unexpectedly exited. Status code was: 127
+; 3029)
+[2024-03-07T01:07:02.632+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-03-07T01:07:02.646+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

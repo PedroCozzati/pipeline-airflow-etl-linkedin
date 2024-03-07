@@ -1,0 +1,185 @@
+[2024-03-07T05:29:36.522+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T05:29:34.700071+00:00 [queued]>
+[2024-03-07T05:29:36.537+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T05:29:34.700071+00:00 [queued]>
+[2024-03-07T05:29:36.538+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 4
+[2024-03-07T05:29:36.589+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): Extraçao_dos_dados> on 2024-03-07 05:29:34.700071+00:00
+[2024-03-07T05:29:36.597+0000] {standard_task_runner.py:60} INFO - Started process 7023 to run task
+[2024-03-07T05:29:36.601+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin', 'Extraçao_dos_dados', 'manual__2024-03-07T05:29:34.700071+00:00', '--job-id', '108', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmpoyrozs4j']
+[2024-03-07T05:29:36.604+0000] {standard_task_runner.py:88} INFO - Job 108: Subtask Extraçao_dos_dados
+[2024-03-07T05:29:36.712+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T05:29:34.700071+00:00 [running]> on host 4fca1e22de4a
+[2024-03-07T05:29:37.001+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin' AIRFLOW_CTX_TASK_ID='Extraçao_dos_dados' AIRFLOW_CTX_EXECUTION_DATE='2024-03-07T05:29:34.700071+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-07T05:29:34.700071+00:00'
+[2024-03-07T05:29:50.221+0000] {warnings.py:109} WARNING - /opt/***/dags/scrap/main.py:50: GuessedAtParserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 50 of the file /opt/***/dags/scrap/main.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+  soup = BeautifulSoup(data)
+
+[2024-03-07T05:30:02.621+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/opt/airflow/dags/scrap/main.py", line 217, in test
+    get_info()
+  File "/opt/airflow/dags/scrap/main.py", line 92, in get_info
+    jobs = driver.find_elements(By.CSS_SELECTOR, "div[data-row]")
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 771, in find_elements
+    return self.execute(Command.FIND_ELEMENTS, {"using": by, "value": value})["value"] or []
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: Unable to find session with ID: 345ba3bd-52a8-4f53-adda-e8a7c79359e1
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.133.1-microsoft-standard-WSL2', java.version: '11.0.21'
+Driver info: driver.version: unknown
+Stacktrace:
+org.openqa.selenium.NoSuchSessionException: Unable to find session with ID: 345ba3bd-52a8-4f53-adda-e8a7c79359e1
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.133.1-microsoft-standard-WSL2', java.version: '11.0.21'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.grid.sessionmap.local.LocalSessionMap.get(LocalSessionMap.java:132)
+	at org.openqa.selenium.grid.sessionmap.SessionMap.getUri(SessionMap.java:84)
+	at org.openqa.selenium.grid.router.HandleSession.lambda$loadSessionId$4(HandleSession.java:223)
+	at io.opentelemetry.context.Context.lambda$wrap$2(Context.java:224)
+	at org.openqa.selenium.grid.router.HandleSession.execute(HandleSession.java:180)
+	at org.openqa.selenium.remote.http.Route$PredicatedRoute.handle(Route.java:383)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.grid.router.Router.execute(Router.java:87)
+	at org.openqa.selenium.grid.web.EnsureSpecCompliantResponseHeaders.lambda$apply$0(EnsureSpecCompliantResponseHeaders.java:34)
+	at org.openqa.selenium.remote.http.Filter$1.execute(Filter.java:63)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$NestedRoute.handle(Route.java:270)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.AddWebDriverSpecHeaders.lambda$apply$0(AddWebDriverSpecHeaders.java:35)
+	at org.openqa.selenium.remote.ErrorFilter.lambda$apply$0(ErrorFilter.java:44)
+	at org.openqa.selenium.remote.http.Filter$1.execute(Filter.java:63)
+	at org.openqa.selenium.remote.ErrorFilter.lambda$apply$0(ErrorFilter.java:44)
+	at org.openqa.selenium.remote.http.Filter$1.execute(Filter.java:63)
+	at org.openqa.selenium.netty.server.SeleniumHandler.lambda$channelRead0$0(SeleniumHandler.java:44)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dag_exemplo.py", line 25, in extract
+    test()
+  File "/opt/airflow/dags/scrap/main.py", line 250, in test
+    driver.quit()
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 469, in quit
+    self.execute(Command.QUIT)
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/airflow/.local/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: Unable to find session with ID: 345ba3bd-52a8-4f53-adda-e8a7c79359e1
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.133.1-microsoft-standard-WSL2', java.version: '11.0.21'
+Driver info: driver.version: unknown
+Stacktrace:
+org.openqa.selenium.NoSuchSessionException: Unable to find session with ID: 345ba3bd-52a8-4f53-adda-e8a7c79359e1
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.133.1-microsoft-standard-WSL2', java.version: '11.0.21'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.grid.sessionmap.local.LocalSessionMap.get(LocalSessionMap.java:132)
+	at org.openqa.selenium.grid.sessionmap.SessionMap.getUri(SessionMap.java:84)
+	at org.openqa.selenium.grid.router.HandleSession.lambda$loadSessionId$4(HandleSession.java:223)
+	at io.opentelemetry.context.Context.lambda$wrap$2(Context.java:224)
+	at org.openqa.selenium.grid.router.HandleSession.execute(HandleSession.java:180)
+	at org.openqa.selenium.remote.http.Route$PredicatedRoute.handle(Route.java:383)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.grid.router.Router.execute(Router.java:87)
+	at org.openqa.selenium.grid.web.EnsureSpecCompliantResponseHeaders.lambda$apply$0(EnsureSpecCompliantResponseHeaders.java:34)
+	at org.openqa.selenium.remote.http.Filter$1.execute(Filter.java:63)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$NestedRoute.handle(Route.java:270)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.AddWebDriverSpecHeaders.lambda$apply$0(AddWebDriverSpecHeaders.java:35)
+	at org.openqa.selenium.remote.ErrorFilter.lambda$apply$0(ErrorFilter.java:44)
+	at org.openqa.selenium.remote.http.Filter$1.execute(Filter.java:63)
+	at org.openqa.selenium.remote.ErrorFilter.lambda$apply$0(ErrorFilter.java:44)
+	at org.openqa.selenium.remote.http.Filter$1.execute(Filter.java:63)
+	at org.openqa.selenium.netty.server.SeleniumHandler.lambda$channelRead0$0(SeleniumHandler.java:44)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+[2024-03-07T05:30:02.642+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=Extraçao_de_dados_do_linkedin, task_id=Extraçao_dos_dados, execution_date=20240307T052934, start_date=20240307T052936, end_date=20240307T053002
+[2024-03-07T05:30:02.724+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 108 for task Extraçao_dos_dados (Message: Unable to find session with ID: 345ba3bd-52a8-4f53-adda-e8a7c79359e1
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.133.1-microsoft-standard-WSL2', java.version: '11.0.21'
+Driver info: driver.version: unknown
+Stacktrace:
+org.openqa.selenium.NoSuchSessionException: Unable to find session with ID: 345ba3bd-52a8-4f53-adda-e8a7c79359e1
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.133.1-microsoft-standard-WSL2', java.version: '11.0.21'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.grid.sessionmap.local.LocalSessionMap.get(LocalSessionMap.java:132)
+	at org.openqa.selenium.grid.sessionmap.SessionMap.getUri(SessionMap.java:84)
+	at org.openqa.selenium.grid.router.HandleSession.lambda$loadSessionId$4(HandleSession.java:223)
+	at io.opentelemetry.context.Context.lambda$wrap$2(Context.java:224)
+	at org.openqa.selenium.grid.router.HandleSession.execute(HandleSession.java:180)
+	at org.openqa.selenium.remote.http.Route$PredicatedRoute.handle(Route.java:383)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.grid.router.Router.execute(Router.java:87)
+	at org.openqa.selenium.grid.web.EnsureSpecCompliantResponseHeaders.lambda$apply$0(EnsureSpecCompliantResponseHeaders.java:34)
+	at org.openqa.selenium.remote.http.Filter$1.execute(Filter.java:63)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$NestedRoute.handle(Route.java:270)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.http.Route$CombinedRoute.handle(Route.java:346)
+	at org.openqa.selenium.remote.http.Route.execute(Route.java:69)
+	at org.openqa.selenium.remote.AddWebDriverSpecHeaders.lambda$apply$0(AddWebDriverSpecHeaders.java:35)
+	at org.openqa.selenium.remote.ErrorFilter.lambda$apply$0(ErrorFilter.java:44)
+	at org.openqa.selenium.remote.http.Filter$1.execute(Filter.java:63)
+	at org.openqa.selenium.remote.ErrorFilter.lambda$apply$0(ErrorFilter.java:44)
+	at org.openqa.selenium.remote.http.Filter$1.execute(Filter.java:63)
+	at org.openqa.selenium.netty.server.SeleniumHandler.lambda$channelRead0$0(SeleniumHandler.java:44)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+; 7023)
+[2024-03-07T05:30:02.776+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-03-07T05:30:02.809+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

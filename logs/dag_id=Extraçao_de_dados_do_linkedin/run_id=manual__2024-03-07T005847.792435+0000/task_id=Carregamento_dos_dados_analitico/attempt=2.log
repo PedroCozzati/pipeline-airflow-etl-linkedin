@@ -1,0 +1,13 @@
+[2024-03-07T00:59:40.339+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Carregamento_dos_dados_analitico manual__2024-03-07T00:58:47.792435+00:00 [queued]>
+[2024-03-07T00:59:40.351+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Carregamento_dos_dados_analitico manual__2024-03-07T00:58:47.792435+00:00 [queued]>
+[2024-03-07T00:59:40.352+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2024-03-07T00:59:40.472+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): Carregamento_dos_dados_analitico> on 2024-03-07 00:58:47.792435+00:00
+[2024-03-07T00:59:40.501+0000] {standard_task_runner.py:60} INFO - Started process 2946 to run task
+[2024-03-07T00:59:40.527+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin', 'Carregamento_dos_dados_analitico', 'manual__2024-03-07T00:58:47.792435+00:00', '--job-id', '71', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmp26wkj6zx']
+[2024-03-07T00:59:40.543+0000] {standard_task_runner.py:88} INFO - Job 71: Subtask Carregamento_dos_dados_analitico
+[2024-03-07T00:59:41.141+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin.Carregamento_dos_dados_analitico manual__2024-03-07T00:58:47.792435+00:00 [running]> on host 4fca1e22de4a
+[2024-03-07T00:59:41.402+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin' AIRFLOW_CTX_TASK_ID='Carregamento_dos_dados_analitico' AIRFLOW_CTX_EXECUTION_DATE='2024-03-07T00:58:47.792435+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-07T00:58:47.792435+00:00'
+[2024-03-07T00:59:42.043+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-03-07T00:59:42.056+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=Extraçao_de_dados_do_linkedin, task_id=Carregamento_dos_dados_analitico, execution_date=20240307T005847, start_date=20240307T005940, end_date=20240307T005942
+[2024-03-07T00:59:42.146+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-03-07T00:59:42.161+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

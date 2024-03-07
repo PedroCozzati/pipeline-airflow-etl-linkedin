@@ -1,0 +1,14 @@
+[2024-03-07T04:25:02.806+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T04:23:35.751999+00:00 [queued]>
+[2024-03-07T04:25:02.819+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T04:23:35.751999+00:00 [queued]>
+[2024-03-07T04:25:02.820+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 6
+[2024-03-07T04:25:02.878+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): Extraçao_dos_dados> on 2024-03-07 04:23:35.751999+00:00
+[2024-03-07T04:25:02.930+0000] {standard_task_runner.py:60} INFO - Started process 6027 to run task
+[2024-03-07T04:25:02.936+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin', 'Extraçao_dos_dados', 'manual__2024-03-07T04:23:35.751999+00:00', '--job-id', '92', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmpvevy79k2']
+[2024-03-07T04:25:02.942+0000] {standard_task_runner.py:88} INFO - Job 92: Subtask Extraçao_dos_dados
+[2024-03-07T04:25:03.147+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T04:23:35.751999+00:00 [running]> on host 4fca1e22de4a
+[2024-03-07T04:25:03.447+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin' AIRFLOW_CTX_TASK_ID='Extraçao_dos_dados' AIRFLOW_CTX_EXECUTION_DATE='2024-03-07T04:23:35.751999+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-07T04:23:35.751999+00:00'
+[2024-03-07T04:25:59.635+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2024-03-07T04:25:59.638+0000] {process_utils.py:131} INFO - Sending 15 to group 6027. PIDs of all processes in the group: [6027]
+[2024-03-07T04:25:59.639+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 6027
+[2024-03-07T04:25:59.640+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-03-07T04:25:59.732+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=6027, status='terminated', exitcode=0, started='04:25:02') (6027) terminated with exit code 0

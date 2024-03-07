@@ -115,7 +115,7 @@ services:
       - '5050:80'
     depends_on:
       - postgres
-
+    
   redis:
     image: redis:latest
     expose:

@@ -1,0 +1,103 @@
+[2024-03-07T03:43:43.805+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T03:43:40.288123+00:00 [queued]>
+[2024-03-07T03:43:43.834+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T03:43:40.288123+00:00 [queued]>
+[2024-03-07T03:43:43.835+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-03-07T03:43:43.911+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): Extraçao_dos_dados> on 2024-03-07 03:43:40.288123+00:00
+[2024-03-07T03:43:43.946+0000] {standard_task_runner.py:60} INFO - Started process 5396 to run task
+[2024-03-07T03:43:43.953+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'Extraçao_de_dados_do_linkedin', 'Extraçao_dos_dados', 'manual__2024-03-07T03:43:40.288123+00:00', '--job-id', '83', '--raw', '--subdir', 'DAGS_FOLDER/dag_exemplo.py', '--cfg-path', '/tmp/tmppieu4ucg']
+[2024-03-07T03:43:43.960+0000] {standard_task_runner.py:88} INFO - Job 83: Subtask Extraçao_dos_dados
+[2024-03-07T03:43:44.160+0000] {task_command.py:423} INFO - Running <TaskInstance: Extraçao_de_dados_do_linkedin.Extraçao_dos_dados manual__2024-03-07T03:43:40.288123+00:00 [running]> on host 4fca1e22de4a
+[2024-03-07T03:43:44.404+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Extraçao_de_dados_do_linkedin' AIRFLOW_CTX_TASK_ID='Extraçao_dos_dados' AIRFLOW_CTX_EXECUTION_DATE='2024-03-07T03:43:40.288123+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-03-07T03:43:40.288123+00:00'
+[2024-03-07T03:43:56.348+0000] {warnings.py:109} WARNING - /opt/***/dags/scrap/main.py:50: GuessedAtParserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("lxml"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
+
+The code that caused this warning is on line 50 of the file /opt/***/dags/scrap/main.py. To get rid of this warning, pass the additional argument 'features="lxml"' to the BeautifulSoup constructor.
+
+  soup = BeautifulSoup(data)
+
+[2024-03-07T03:44:07.492+0000] {logging_mixin.py:188} INFO - 25
+[2024-03-07T03:44:13.505+0000] {logging_mixin.py:188} INFO - Atualmente na página: 0
+[2024-03-07T03:44:23.508+0000] {logging_mixin.py:188} INFO - Loader automático...
+[2024-03-07T03:44:29.528+0000] {logging_mixin.py:188} INFO - 50
+[2024-03-07T03:44:33.524+0000] {logging_mixin.py:188} INFO - Atualmente na página: 1
+[2024-03-07T03:44:44.039+0000] {logging_mixin.py:188} INFO - Loader automático...
+[2024-03-07T03:44:50.056+0000] {logging_mixin.py:188} INFO - 75
+[2024-03-07T03:44:53.915+0000] {logging_mixin.py:188} INFO - Atualmente na página: 2
+[2024-03-07T03:45:03.974+0000] {logging_mixin.py:188} INFO - Loader automático...
+[2024-03-07T03:45:11.378+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Júnior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Compras', 'Setores', 'Serviços de alimentação e bebidas']
+[2024-03-07T03:45:16.304+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:45:21.755+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Transporte, armazenagem e correio']
+[2024-03-07T03:45:26.635+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:45:32.130+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Distribuição', 'Setores', 'Serviços de alimentação e bebidas']
+[2024-03-07T03:45:37.528+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Gerenciamento e Manufatura', 'Setores', 'Atividades dos serviços de tecnologia da informação']
+[2024-03-07T03:45:42.392+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:45:47.970+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Atividades de serviços financeiros']
+[2024-03-07T03:45:53.296+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Bancos']
+[2024-03-07T03:45:58.126+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:46:03.643+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Desenvolvimento de negócios e Vendas', 'Setores', 'Fabricação de máquinas e equipamentos de uso industrial específico']
+[2024-03-07T03:46:09.057+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Pesquisa, Analista e Tecnologia da informação', 'Setores', 'Assessoria em relações públicas e comunicação']
+[2024-03-07T03:46:13.966+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:46:19.451+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Comércio varejista']
+[2024-03-07T03:46:24.789+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Financeiro e Administração', 'Setores', 'Fabricação de cosméticos, produtos de perfumaria e de higiene pessoal']
+[2024-03-07T03:46:29.662+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:46:34.497+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:46:40.095+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Agricultura']
+[2024-03-07T03:46:45.740+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Gerenciamento e Manufatura', 'Setores', 'Transporte, armazenagem e correio']
+[2024-03-07T03:46:51.209+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Outro', 'Setores', 'Desenvolvimento de software']
+[2024-03-07T03:46:56.722+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Bancos']
+[2024-03-07T03:47:01.540+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:47:06.776+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Atendimento ao Cliente, Analista e Administração', 'Setores', 'Hotelaria, Atividades de serviços pessoais e Serviços de engenharia']
+[2024-03-07T03:47:11.635+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:47:16.433+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:47:21.271+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:47:26.530+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Atividades dos serviços de tecnologia da informação e Serviços de dados de tecnologia da informação']
+[2024-03-07T03:47:31.893+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Assistente', 'Tipo de emprego', 'Tempo integral', 'Função', 'Educação e Treinamento', 'Setores', 'Educação superior']
+[2024-03-07T03:47:37.207+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Gerenciamento e Manufatura', 'Setores', 'Comércio varejista']
+[2024-03-07T03:47:42.093+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:47:47.612+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Assistente', 'Tipo de emprego', 'Tempo integral', 'Função', 'Engenharia e Tecnologia da informação', 'Setores', 'Atividades de serviços financeiros']
+[2024-03-07T03:47:53.022+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Educação e Treinamento', 'Setores', 'Fornecimento e gestão de recursos humanos']
+[2024-03-07T03:47:58.428+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Desenvolvimento de negócios e Vendas', 'Setores', 'Comércio varejista']
+[2024-03-07T03:48:03.257+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:48:08.080+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:48:13.440+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Atividades imobiliárias']
+[2024-03-07T03:48:18.743+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Financeiro e Vendas', 'Setores', 'Alimentos e bebidas']
+[2024-03-07T03:48:24.013+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Gerenciamento e Manufatura', 'Setores', 'Fabricação de veículos automotores, reboques e carrocerias, Fabricação de máquinas, aparelhos e materiais elétricos e Atividades dos serviços de tecnologia da informação']
+[2024-03-07T03:48:28.878+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:48:34.675+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Bancos']
+[2024-03-07T03:48:39.858+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Estágio', 'Tipo de emprego', 'Tempo integral', 'Função', 'Educação e Treinamento', 'Setores', 'Fabricação de veículos automotores, reboques e carrocerias']
+[2024-03-07T03:48:45.112+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Marketing e Vendas', 'Setores', 'Agricultura']
+[2024-03-07T03:48:49.990+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:48:55.296+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Financeiro e Vendas', 'Setores', 'Agricultura']
+[2024-03-07T03:49:00.149+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:49:05.585+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Financeiro e Vendas', 'Setores', 'Extração de petróleo e gás natural']
+[2024-03-07T03:49:10.947+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Outro', 'Setores', 'Recrutamento e seleção de pessoal']
+[2024-03-07T03:49:16.379+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Júnior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Desenvolvimento de software']
+[2024-03-07T03:49:21.668+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Engenharia e Tecnologia da informação', 'Setores', 'Atividades de serviços pessoais']
+[2024-03-07T03:49:27.455+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Pleno-sênior', 'Tipo de emprego', 'Tempo integral', 'Função', 'Consultoria, Financeiro e Estratégia/Planejamento', 'Setores', 'Comércio varejista']
+[2024-03-07T03:49:32.843+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Desenvolvimento de negócios e Vendas', 'Setores', 'Telecomunicações']
+[2024-03-07T03:49:38.092+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Executivo', 'Tipo de emprego', 'Tempo integral', 'Função', 'Gestão de projetos', 'Setores', 'Fabricação de cosméticos, produtos de perfumaria e de higiene pessoal']
+[2024-03-07T03:49:42.912+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:49:48.367+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Agricultura']
+[2024-03-07T03:49:53.780+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Assistente', 'Tipo de emprego', 'Tempo integral', 'Função', 'Pesquisa, Analista e Tecnologia da informação', 'Setores', 'Bancos']
+[2024-03-07T03:49:58.605+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:50:03.418+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:50:08.787+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Financeiro e Vendas', 'Setores', 'Fabricação de máquinas, aparelhos e materiais elétricos']
+[2024-03-07T03:50:14.330+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Gerenciamento e Manufatura', 'Setores', 'Telecomunicações']
+[2024-03-07T03:50:19.222+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:50:24.670+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Gerenciamento e Manufatura', 'Setores', 'Atividades dos serviços de tecnologia da informação']
+[2024-03-07T03:50:29.499+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:50:34.902+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Assistente', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Atividades de serviços financeiros']
+[2024-03-07T03:50:39.768+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:50:45.231+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Assistente', 'Tipo de emprego', 'Tempo integral', 'Função', 'Recursos humanos', 'Setores', 'Atividades de serviços financeiros']
+[2024-03-07T03:50:50.094+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:50:54.955+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:50:59.765+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:51:04.588+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:51:10.010+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Educação e Treinamento', 'Setores', 'Atividades de apoio à educação']
+[2024-03-07T03:51:15.197+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Gerenciamento e Manufatura', 'Setores', 'Fabricação de máquinas, aparelhos e materiais elétricos']
+[2024-03-07T03:51:20.085+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:51:25.594+0000] {logging_mixin.py:188} INFO - ['Nível de experiência', 'Não aplicável', 'Tipo de emprego', 'Tempo integral', 'Função', 'Tecnologia da informação', 'Setores', 'Fabricação de produtos alimentícios e bebidas']
+[2024-03-07T03:51:30.419+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:51:35.277+0000] {logging_mixin.py:188} INFO - ['NA']
+[2024-03-07T03:51:37.962+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-03-07T03:51:37.976+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=Extraçao_de_dados_do_linkedin, task_id=Extraçao_dos_dados, execution_date=20240307T034340, start_date=20240307T034343, end_date=20240307T035137
+[2024-03-07T03:51:38.079+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-03-07T03:51:38.100+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
