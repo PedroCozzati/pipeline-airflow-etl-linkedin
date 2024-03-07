@@ -115,7 +115,14 @@ services:
       - '5050:80'
     depends_on:
       - postgres
-    
+
+  selenium:
+    container_name: selenium-container
+    image: selenium/standalone-firefox:latest
+    ports:
+      - 4444:4444
+    restart: always
+
   redis:
     image: redis:latest
     expose:
