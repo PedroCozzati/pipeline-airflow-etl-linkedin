@@ -20,7 +20,6 @@ dag = DAG(
     catchup=False,
 )
 
-
 def extract():
    test()
     
@@ -41,9 +40,7 @@ def get_all_source():
 
     destination_path = os.path.join(current_directory, destination_file)
 
-    data.to_csv(destination_path, index=False)
-            
-
+    data.to_csv(destination_path, index=False)       
 
 def transform_data():
     source_file = "results/full_data.csv"
@@ -54,7 +51,7 @@ def transform_data():
     
     dados = pd.read_csv(source_path)
     dados = dados.reset_index(drop=True)
-    dados.set_index("id", inplace=True)
+    # dados.set_index("id", inplace=True)
     dados_tec = dados[
         dados["title"].str.contains(
             "QA|Implantação|Programação|Desenvolvedor|Programador|Developer|Analista|Desenvolvimento|Engenheiro|Software|Estágio|Tecnologicas|Tecnologia|Computação|Tech|stack|Dev|Data|Desenvolver|TI",
@@ -233,7 +230,6 @@ def transform_data():
     destination_path = os.path.join(current_directory, "results/dados_transformados.csv")
     dados_nao_nulos.to_csv(destination_path, index=False)
 
-
 def load_data_transacional():
     source_file = "results/dados_transformados.csv"
     destination_file = "prod/dados_transacional.db"
@@ -271,15 +267,15 @@ def load_data_analitico():
     
     disk_engine = create_engine(f'sqlite:///{destination_path}')
     
-    for index, row in dados.iterrows():
-        job_id = row['job_id']
+    # for index, row in dados.iterrows():
+    #     job_id = row['job_id']
         
-        query = f"SELECT EXISTS (SELECT 1 FROM vagas WHERE job_id = '{job_id}' LIMIT 1)"
+    #     query = f"SELECT EXISTS (SELECT 1 FROM vagas WHERE job_id = '{job_id}' LIMIT 1)"
         
-        result = disk_engine.execute(query).fetchone()
-        
-        if result[0] == 0:
-            row.to_sql('vagas', disk_engine, if_exists='append', index=False)
+    #     result = disk_engine.execute(query).fetchone()
+    #     print(result)
+    #     if result[0] == 0:
+    dados.to_sql('vagas', disk_engine, if_exists='append', index=False)
 
 task1 = PythonOperator(
     task_id="Extraçao_dos_dados",
