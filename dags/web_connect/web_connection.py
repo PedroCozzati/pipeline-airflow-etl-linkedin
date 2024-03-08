@@ -1,6 +1,5 @@
-from bs4 import BeautifulSoup
-import requests
 import urllib.parse
+
 
 class WebConnection:
     headers = {
@@ -30,7 +29,6 @@ class WebConnection:
         self.driver = driver
     
     def start_connection(self):
-        
         location = urllib.parse.quote(self.estado+self.cidade+self.pais)
         distance = self.distance
         driver = self.driver
@@ -38,6 +36,5 @@ class WebConnection:
         complete_url = self.url+'search?keywords='+cargo+'&location='+location+'&trk=public_jobs_jobs-search-bar_search-submit&geoId=104746682&distance='+distance+'&position=1&pageNum=0'
         
         driver.get(complete_url)
-        
+
         return driver.page_source
-        
