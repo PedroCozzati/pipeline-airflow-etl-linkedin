@@ -16,7 +16,7 @@ No banco transacional, apenas os registros do dia são gravados, já no analíti
 
 Após esses dados serem armazenados, os dados do banco de dados analitico são enviados para a cloud (https://aiven.io/) em um banco de dados POSTGRES. 
 
-Já o banco de dados analitico é enviado para um repositório no GITHUB (https://github.com/PedroCozzati/streamlit-test), onde o STREAMLIT está observando para gerar alguns gráficos no site hospedado (https://relatorios-vagas.streamlit.app/?utm_medium=oembed)
+Já o banco de dados analitico é enviado para um repositório no GITHUB (https://github.com/PedroCozzati/streamlit-analise-linkedin), onde o STREAMLIT está observando para gerar alguns gráficos no site hospedado (https://relatorios-vagas.streamlit.app/?utm_medium=oembed)
 ## Documentação técnica
 
 Para o projeto, foi utilizada a imagem do Airflow v2.8.1 no Docker.
