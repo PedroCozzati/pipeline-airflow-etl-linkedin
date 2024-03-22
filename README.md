@@ -46,7 +46,7 @@ Links
 
 ```bash
   Site de vagas que consome os dados: *EM BREVE*
-  Relatório Streamlit: https://relatorios-vagas.streamlit.app/?utm_medium=oembed
+  Relatório Streamlit: https://relatorio-linkedin-vagas.streamlit.app/
 ```
 
 
