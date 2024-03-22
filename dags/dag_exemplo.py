@@ -1,12 +1,16 @@
 from datetime import datetime, timedelta
 from airflow import DAG
 from cloud_con.postgres_cloud_con import export_data_aiven_cloud_postgres
+from github_con.push_to_github import add_or_update_in_git
 from scrap.main import web_scrap_linkedin
 from etl.extract import get_all_source
 from etl.load import load_data_analitico
 from etl.load import load_data_transacional
 from etl.transform import transform_data
 from airflow.operators.python import PythonOperator
+from dotenv import load_dotenv
+
+load_dotenv()
 
 dag = DAG(
     "Extraçao_de_dados_do_linkedin",
@@ -54,4 +58,11 @@ task6 = PythonOperator(
     python_callable=export_data_aiven_cloud_postgres,
 )
 
-task1>>task2>>task3>>[task4,task5]>>task6
+task7 = PythonOperator(
+    task_id="Enviar_dados_analiticos_streamlit",
+    dag=dag,
+    python_callable=add_or_update_in_git,
+)
+
+task1>>task2>>task3>>[task4,task5] >> task6>>task7
+
